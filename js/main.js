@@ -7,3 +7,7 @@ function init(){
     showGallery()
     renderGallery()
 }
+
+function toggleMenu() {
+    document.body.classList.toggle('menu-open')
+}

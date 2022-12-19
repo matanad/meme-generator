@@ -39,9 +39,9 @@ canvas{
     border: 5px solid var(--clr3);
 }
 
-@media (max-width: 500px){
-    .canvas-container{
-        width: 300px;
+@media (max-width: 640px){
+    canvas{
+        height: 400px;
     }
 
     .editor-container{

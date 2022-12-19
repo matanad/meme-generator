@@ -23,3 +23,26 @@
     padding: .3em 1.2em;
     box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.15);
 }
+
+@media (max-width: 640px){
+    html{
+        font-size: 13px;
+    }
+
+    .logo {
+        margin-inline-start: 2em;
+        width: 7rem;
+    }
+
+    .main-nav > * {
+        margin-inline-end: 1em;
+    }
+
+    .main-nav li {
+        margin-inline-end: 0em;
+    }
+
+    .main-nav {
+        margin-inline-end: 0rem;
+    }
+}

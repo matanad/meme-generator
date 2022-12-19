@@ -83,3 +83,17 @@
 .color input::-webkit-color-swatch {
     display: none;
 }
+
+.menu-toggle-btn {
+    display: none;
+}
+
+@media (max-width: 680px){
+    .menu-toggle-btn {
+        background-color: inherit;
+        border: none;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+    }
+}
