@@ -4,27 +4,24 @@ let gCtx
 gElCanvas = document.querySelector('canvas')
 gCtx = gElCanvas.getContext('2d')
 
-// const meme = getMeme()
-// const memeImgUrl = getImgUrlById(meme.selectedImgId)
-// // renderMeme()
-
 function renderMeme() {
     const meme = getMeme()
     const memeImgUrl = getImgUrlById(meme.selectedImgId)
     drawImg(memeImgUrl)
-    setTimeout(() => {
-        meme.lines.forEach(line => drawText(line, 5))
-    }, 300);
 }
 
-function drawText({ txt, size = 40, align = 'left', color = 'white' }, x = 50, y = 50) {
-    gCtx.lineWidth = 2
-    gCtx.fillStyle = color
-    gCtx.font = `${size}px sans-serif`
-    gCtx.textAlign = align
+function drawText() {
+    const lines = getLines()
+    lines.forEach(line => {
+        const { txt, pos } = line
+        gCtx.lineWidth = 2
+        gCtx.fillStyle = line.color
+        gCtx.font = `${line.size}px impact`
+        gCtx.textAlign = line.align
 
-    gCtx.fillText(txt, x, y)
-    gCtx.strokeText(txt, x, y)
+        gCtx.fillText(txt, pos.x, pos.y)
+        gCtx.strokeText(txt, pos.x, pos.y)
+    })
 }
 
 function drawImg(img) {
@@ -32,11 +29,50 @@ function drawImg(img) {
     elImg.src = img
     elImg.onload = () => {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+        drawText()
     }
+}
+
+function isClickedText(line, pos) {
+    const width = getLineWidth(line)
+    const height = getLineHeight(line)
+
+    return (
+        pos.x > line.x - width / 2 &&
+        pos.x < line.x + width / 2 &&
+        pos.y > line.y - height / 2 &&
+        pos.y < line.y + height / 2
+    )
+}
+
+function getLineWidth({txt}) {
+    const textMeasurements = gCtx.measureText(txt)
+    return textMeasurements.width
+}
+
+function getLineHeight(line) {
+    const { txt, size, font, align, bold, italic, x, y } = line
+    gCtx.font = `${bold ? 'bold' : 'normal'} ${italic ? 'italic' : 'normal'
+        } ${size}px ${font}`
+    const textMeasurements = gCtx.measureText(txt)
+    const height =
+        textMeasurements.actualBoundingBoxAscent +
+        textMeasurements.actualBoundingBoxDescent
+    return height
 }
 
 function onTxtInput(elTxt) {
     setLineTxt(elTxt.value)
+    renderMeme()
+}
+
+function onTxtColor(elColor) {
+    setTxtColor(elColor.value)
+    renderMeme()
+}
+
+function onChangeFontSize(direction) {
+    setFontSize(direction)
     renderMeme()
 }
 
@@ -46,8 +82,22 @@ function hideEditor() {
 
 function showEditor() {
     document.querySelector('.editor-container').style.display = ''
+    document.querySelector('.txt-input').value = getSelectedLine().txt
+    setMouseListeners(gElCanvas)
 }
 
-function renderEditor() {
 
+
+function resetEditor() {
+    resetLines()
+    document.querySelector('.txt-input').value = ''
+}
+
+function onSwitchLine() {
+    switchLine()
+    document.querySelector('.txt-input').value = getSelectedLine().txt
+}
+
+function getCtx(){
+    return gCtx
 }

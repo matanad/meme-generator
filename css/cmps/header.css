@@ -1,0 +1,25 @@
+.main-header {
+    border-radius: 2em;
+    margin-bottom: 1rem;
+}
+
+.logo {
+    margin-inline-start: 4em;
+    width: 7rem;
+}
+
+.main-nav {
+    margin-inline-end: 15rem;
+}
+
+.main-nav li:first-child {
+    margin-inline-end: 5em;
+}
+
+.active {
+    color: var(--clr2);
+    background-color: var(--clr4);
+    border-radius: 2em;
+    padding: .3em 1.2em;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.15);
+}

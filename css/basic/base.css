@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 1rem 1.437rem;
+    margin: 0;
+    background-color: var(--clr1);
+    font-family: poppins, sans-serif;
+    font-size: 1.302rem;
+    text-align: center;
+    color: var(--clr4);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+button {
+    font-family: poppins-light, sans-serif;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(.97);
+}
+
+a {
+    color: unset;
+    text-decoration: unset;
+}
+
+h6 {
+    margin: 0;
+}

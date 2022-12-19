@@ -18,6 +18,12 @@ function onImgSelect(imgId) {
 }
 
 function hideGallery() {
-    document.querySelector('.serch-area').style.display = 'none'
-    document.querySelector('.image-gallery').style.display = 'none'
+    document.querySelector('.gallery-container').style.display = 'none'
+    document.querySelector('.gallery-btn').classList.remove('active')
+}
+
+function showGallery(){
+    document.querySelector('.gallery-container').style.display = ''
+    document.querySelector('.gallery-btn').classList.add('active')
+
 }

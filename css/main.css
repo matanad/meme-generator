@@ -1,55 +1,18 @@
-* {
-    box-sizing: border-box;
-}
+/* Setup */
+@import './setup/vars.css';
+@import './setup/font-face.css';
 
-/* SETUP */
+/* Basic */
+@import './basic/base.css';
+@import './basic/buttons.css';
+@import './basic/background.css';
 
-/* vars */
-:root {
-    --clr1: #22252c;
-    --clr2: #21AC91;
-    --clr3: #383B42;
-    --clr4: #FEFEFE;
-}
+/* COMPONENTS */
+@import './cmps/header.css';
+@import './cmps/main-content.css';
+@import './cmps/search.css';
+@import './cmps/gallery.css';
+@import './cmps/editor.css';
 
-/* BASE */
-
-/* typography */
-
-
-
-/* basics */
-
-body {
-    margin: 0;
-    background-color: var(--clr1);
-    font-size: 1.302rem;
-    text-align: center;
-    color: var(--clr4);
-}
-
-button{
-    cursor: pointer;
-}
-
-ul {
-    list-style: none;
-    display: flex;
-}
-
-a {
-    color: unset;
-    text-decoration: unset;
-}
-
-.logo {
-    display: block;
-    width: 5rem;
-}
-
-/* LAYOUT */
-
-.main-layout>*:not(.full) {
-    max-width: 1257px;
-    margin: 0 auto;
-}
+/* Helpers */
+@import './basic/helpers.css';
